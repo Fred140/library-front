@@ -1,0 +1,96 @@
+
+
+<div class="form-container" >
+ <div>
+  <h2>Création du livre</h2>
+ </div>
+
+ <form (ngSubmit)="onSubmit()" #livreForm="ngForm">
+<mat-form-field>
+  <mat-label>Titre du livre</mat-label>
+  <input matInput name="titre" [(ngModel)]="nouveauLivre.titre" required>
+</mat-form-field>
+<mat-form-field class="auteur">
+  <mat-label>Auteur</mat-label>
+  <input matInput name="auteur" [(ngModel)]="nouveauLivre.auteur" required>
+</mat-form-field>
+<mat-form-field class="text">
+  <mat-label>Résumé du livre</mat-label>
+  <textarea matInput name="resume" [(ngModel)]="nouveauLivre.resume"></textarea>
+</mat-form-field>
+<label for="avatar">Choisir la couverture du livre:</label>
+
+<input type="file" id="avatar" (change)="onFileSelected($event)" accept="image/png, image/jpeg" />
+<mat-form-field class="example-full-width">
+  <mat-label>Date de publication</mat-label>
+  <input matInput [matDatepicker]="picker" name="publication" [(ngModel)]="nouveauLivre.publication" required>
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  <div class="example-button-row">
+  <button mat-stroked-button type="submit">Valider</button>
+  <button *ngIf="livreEnEdition" mat-stroked-button type="button" (click)="annulerEdition()">Annuler</button>
+   </div>
+</form>
+</div>
+
+<div>
+  <h2>Liste des livres</h2>
+</div>
+
+<mat-form-field class="text">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Titre, Auteur ou Résumé" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="titre">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Titre </th>
+    <td mat-cell *matCellDef="let element"> {{element.titre}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="auteur">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Auteur </th>
+    <td mat-cell *matCellDef="let element"> {{element.auteur}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="resume">
+    <th mat-header-cell *matHeaderCellDef> Résumé </th>
+    <td mat-cell *matCellDef="let element"> {{element.resume  | slice:0:50}}<span *ngIf="element.resume.length > 50">...</span></td>
+  </ng-container>
+
+    <ng-container matColumnDef="publication">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Publication </th>
+    <td mat-cell *matCellDef="let element"> {{element.publication | date}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button class="accent" (click)="onEdit(element)">Modifier</button>
+      <button mat-button class="color" (click)="deleteLivre(element.id)">Supprimer</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+
+</table>
+
+ <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+<button mat-stroked-button routerLink="/mosaique" routerLinkActive="router-link-active" >Regarder la liste de livres</button>

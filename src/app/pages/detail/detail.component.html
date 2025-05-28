@@ -1,0 +1,22 @@
+<div class="retour-btn-container">
+  <button mat-stroked-button routerLink="/mosaique" routerLinkActive="router-link-active">Retour</button>
+</div>
+<html>
+  <head>
+    <title>Book Landing Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Ovo|Source+Sans+Pro:300" rel="stylesheet">
+  </head>
+  <body>
+     <div *ngIf="livre">
+    <div id="container">
+<div class="book-cover-container">
+   <h1>{{ livre.titre }}</h1>
+      <h3>Auteur : {{ livre.auteur }}</h3>
+      <strong>Résumé :</strong>
+      <p>{{ livre.resume }}</p>
+  </div></div>
+</div>
+  </body>
+</html>
+
+

@@ -1,0 +1,98 @@
+html {
+  font-size: calc(1em + 1vw);
+}
+
+body {
+  padding: 1em;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Ovo', serif;
+}
+
+.hero {
+  background: #3f3f3f;
+  color: white;
+  border-radius: 25px;
+  padding: 1em;
+}
+
+.book-cover {
+ width: 10px;
+  height: 10px;
+  -webkit-box-shadow: 0px 11px 23px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 11px 23px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 11px 23px 0px rgba(0,0,0,0.75);
+}
+
+.book-cover-container {
+  padding-left: 1em;
+  float: right;
+  max-width: 324px;
+}
+
+.book-cover-container p {
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+@media only screen and (max-width: 40.063em) {
+  .book-cover {
+    float: none;
+    margin-right: 0;
+  }
+}
+
+p {
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+#container {
+  max-width: 600px;
+  margin: 0;
+  padding-left: 2em;
+}
+
+/* setting the max width*/
+ @media screen and (min-width: 50em) {
+  html {
+    font-size: 1.5em;
+  }
+
+}
+
+/* #Wet Asphalt Flat Button
+==================================================*/
+.wet-asphalt-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #34495e;
+  border: 0;
+  border-bottom: 2px solid #263849;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #263849;
+  box-shadow: inset 0 -2px #263849;
+}
+.wet-asphalt-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.retour-btn-container {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  margin-bottom: 1em;
+}

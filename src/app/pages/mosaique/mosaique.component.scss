@@ -1,0 +1,74 @@
+.example-card {
+  width: 100%;
+  max-width: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  /* Hauteur auto pour s'adapter au contenu */
+  height: auto;
+  /* Pour éviter que le contenu déborde */
+  word-break: break-word;
+}
+
+.example-header-image {
+  background-image: url('/logo.jpg');
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: flex-start; // <-- Important pour que chaque carte ait sa propre hauteur
+}
+
+mat-card-content p {
+  margin: 0.5rem 0;
+  /* Pour gérer les textes très longs */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.position {
+  justify-content: flex-start;
+}
+
+mat-card-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-start; /* ou center si tu veux centrer les boutons */
+}
+
+.date {
+  font-size: 0.8rem;
+  color: gray;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.retour-btn-container {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  margin-right: 40px;
+  margin-bottom: 1em;
+}
+
+.share-applet {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 0.5em 1em;
+  margin-top: 0.5em;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+}
